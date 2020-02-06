@@ -37,7 +37,7 @@ import qualified Data.ByteString.Char8 as Char8
 import qualified Data.Map as Map
 
 -- NOTE: for the following Id datatypes, the main repo has their @Show@ instances auto-derived.
--- Why is that??? I don't konw. But anyway, I removed those and gave them proper instances,
+-- Why is that??? I don't know. But anyway, I removed those and gave them proper instances,
 -- so hopefully the API will actually ^work^ now.
 newtype AccountId = AccountId { unAccountId :: String } deriving (FromJSON, IsString)
 instance Show AccountId where show = unAccountId
@@ -52,7 +52,7 @@ newtype MediaId = MediaId { unMediaId :: String } deriving (FromJSON, IsString)
 instance Show MediaId where show = unMediaId
 
 newtype NotificationId = NotificationId { unNotificationId :: String } deriving (FromJSON, IsString)
-instance Show Notificationid where show = unNotificationid
+instance Show NotificationId where show = unNotificationid
 
 newtype RelationshipId = RelationshipId { unRelationshipId :: String } deriving (FromJSON, IsString)
 instance Show RelationshipId where show = unRelationshipId
