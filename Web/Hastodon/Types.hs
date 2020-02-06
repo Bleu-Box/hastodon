@@ -36,22 +36,32 @@ import qualified Data.Text.Encoding as T
 import qualified Data.ByteString.Char8 as Char8
 import qualified Data.Map as Map
 
-newtype AccountId = AccountId { unAccountId :: String } deriving (FromJSON, IsString, Show)
+-- NOTE: for the following Id datatypes, the main repo has their @Show@ instances auto-derived.
+-- Why is that??? I don't konw. But anyway, I removed those and gave them proper instances,
+-- so hopefully the API will actually ^work^ now.
+newtype AccountId = AccountId { unAccountId :: String } deriving (FromJSON, IsString)
+instance Show AccountId where show = unAccountId
 
-newtype AttachmentId = AttachmentId { unAttachmentId :: String } deriving (FromJSON, IsString, Show)
+newtype AttachmentId = AttachmentId { unAttachmentId :: String } deriving (FromJSON, IsString)
+instance Show AttachmentId where show = unAttachmentId
 
-newtype OAuthClientId = OAuthClientId { unOAuthClientId :: String } deriving (FromJSON, IsString, Show)
+newtype OAuthClientId = OAuthClientId { unOAuthClientId :: String } deriving (FromJSON, IsString)
+instance Show OAuthClientId where show = unOAuthClientId
 
-newtype MediaId = MediaId { unMediaId :: String } deriving (FromJSON, IsString, Show)
+newtype MediaId = MediaId { unMediaId :: String } deriving (FromJSON, IsString)
+instance Show MediaId where show = unMediaId
 
-newtype NotificationId = NotificationId { unNotificationId :: String } deriving (FromJSON, IsString, Show)
+newtype NotificationId = NotificationId { unNotificationId :: String } deriving (FromJSON, IsString)
+instance Show Notificationid where show = unNotificationid
 
-newtype RelationshipId = RelationshipId { unRelationshipId :: String } deriving (FromJSON, IsString, Show)
+newtype RelationshipId = RelationshipId { unRelationshipId :: String } deriving (FromJSON, IsString)
+instance Show RelationshipId where show = unRelationshipId
 
-newtype ReportId = ReportId { unReportId :: String } deriving (FromJSON, IsString, Show)
+newtype ReportId = ReportId { unReportId :: String } deriving (FromJSON, IsString)
+instance Show ReportId where show = unReportId
 
-newtype StatusId = StatusId { unStatusId :: String } deriving (FromJSON, IsString, Show)
-
+newtype StatusId = StatusId { unStatusId :: String } deriving (FromJSON, IsString)
+instance Show StatusId where show = unStatusId
 
 data OAuthResponse = OAuthResponse {
   accessToken :: String
