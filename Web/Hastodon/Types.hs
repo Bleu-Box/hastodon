@@ -52,7 +52,7 @@ newtype MediaId = MediaId { unMediaId :: String } deriving (FromJSON, IsString)
 instance Show MediaId where show = unMediaId
 
 newtype NotificationId = NotificationId { unNotificationId :: String } deriving (FromJSON, IsString)
-instance Show NotificationId where show = unNotificationid
+instance Show NotificationId where show = unNotificationId
 
 newtype RelationshipId = RelationshipId { unRelationshipId :: String } deriving (FromJSON, IsString)
 instance Show RelationshipId where show = unRelationshipId
