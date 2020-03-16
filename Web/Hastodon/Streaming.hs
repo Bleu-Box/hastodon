@@ -39,11 +39,12 @@ pStreamList        = "/api/v1/streaming/list"
 type StreamingResponse m =
   forall m. MonadResource m => ConduitT () StreamingPayload m ()
 
-data StreamingPayload = SUpdate Status             |
-                        SNotification Notification |
-                        SDelete StatusId           |
-                        Thump
-                        deriving (Show)
+data StreamingPayload =
+  SUpdate Status
+  | SNotification Notification
+  | SDelete StatusId
+  | Thump
+  deriving (Show)
 
 data EventType = EUpdate | ENotification | EDelete
 
@@ -72,7 +73,7 @@ streamList client list = getStreamingResponse l client where
 
 stream :: ByteString -> ByteString -> (ByteString, [StreamingPayload])
 stream i a | isThump i = ("", [Thump])
-           | isEvent i = (i, [])
+           -- | isEvent i = (i, [])
            | otherwise = parseE a i
   where parseE et d =
           case parseET et of
